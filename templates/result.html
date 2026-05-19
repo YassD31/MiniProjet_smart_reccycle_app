@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Résultat Smart Recycling</title>
+
+<style>
+
+    body{
+        font-family: Arial, sans-serif;
+        background: #f2f5f7;
+        margin:0;
+        padding:30px;
+    }
+
+    .container{
+        width:1000px;
+        margin:auto;
+        background:white;
+        border-radius:20px;
+        padding:30px;
+        box-shadow:0px 0px 15px rgba(0,0,0,0.2);
+    }
+
+    h1{
+        color:green;
+        text-align:center;
+    }
+
+    .main-section{
+        display:flex;
+        gap:30px;
+        margin-top:30px;
+        align-items:center;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .image-box img{
+        width:300px;
+        border-radius:15px;
+        box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+    .prediction-box{
+        background:#e8f5e9;
+        padding:25px;
+        border-radius:15px;
+        width:350px;
+        text-align:center;
+    }
+
+    .prediction-box h2{
+        color:#1b5e20;
+    }
+
+    .confidence{
+        font-size:22px;
+        margin-top:15px;
+        font-weight:bold;
+        color:#0d47a1;
+    }
+
+    .section{
+        margin-top:40px;
+        background:#fafafa;
+        padding:25px;
+        border-radius:15px;
+    }
+
+    .section h2{
+        color:#2e7d32;
+    }
+
+    ul{
+        list-style:none;
+        padding:0;
+    }
+
+    li{
+        background:#eeeeee;
+        margin:10px 0;
+        padding:10px;
+        border-radius:8px;
+    }
+
+    .chart{
+        text-align:center;
+    }
+
+    .chart img{
+        width:600px;
+        max-width:100%;
+    }
+
+    .map-section img{
+        width:100%;
+        border-radius:15px;
+        margin-top:20px;
+        box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+    .back-btn{
+        display:inline-block;
+        margin-top:30px;
+        padding:12px 25px;
+        background:green;
+        color:white;
+        text-decoration:none;
+        border-radius:10px;
+        font-size:18px;
+    }
+
+    .back-btn:hover{
+        background:darkgreen;
+    }
+
+    .info-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20px;
+    }
+
+    .info-card{
+        background:white;
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>♻ Résultat de l'analyse intelligente</h1>
+
+    <div class="main-section">
+
+        <div class="image-box">
+            <img src="/{{ image_path }}">
+        </div>
+
+        <div class="prediction-box">
+
+            <h2>Type détecté</h2>
+
+            <h1>{{ prediction }}</h1>
+
+            <div class="confidence">
+                Confiance IA : {{ confidence }}%
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>📊 Top prédictions de l'IA</h2>
+
+        <ul>
+            {% for p in top_predictions %}
+                <li>
+                    {{ p.class }} : {{ p.score }}%
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="section chart">
+
+        <h2>📈 Graphique des prédictions</h2>
+
+        <img src="/{{ chart_path }}">
+
+    </div>
+
+    <div class="section">
+
+        <h2>🌍 Informations environnementales</h2>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <h3>🌎 Pollution</h3>
+
+                <p>{{ pollution }}</p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>♻ Recyclage</h3>
+
+                <p>{{ recycle }}</p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>⚠ Impact environnemental</h3>
+
+                <p>{{ impact }}</p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>💻 Déchets électroniques</h3>
+
+                <p>
+                    Les déchets électroniques contiennent souvent :
+                    cuivre, lithium, aluminium et métaux rares.
+                    Leur recyclage est essentiel pour réduire
+                    la pollution toxique mondiale.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section map-section">
+
+        <h2>🗺 Carte mondiale de pollution</h2>
+
+        <p>
+            Cette carte montre les régions du monde les plus
+            touchées par la pollution liée au matériau détecté.
+        </p>
+
+        <img src="/{{ map_path }}">
+
+    </div>
+
+    <div style="text-align:center;">
+
+        <a href="/" class="back-btn">
+            Retour à l'accueil
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

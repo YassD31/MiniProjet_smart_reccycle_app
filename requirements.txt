@@ -1,0 +1,8 @@
+Flask
+tensorflow
+numpy
+matplotlib
+geopandas
+folium
+Pillow
+h5py

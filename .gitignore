@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+venv/
+.venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Flask / local runtime
+instance/
+.webassets-cache
+uploads/*
+!uploads/.gitkeep
+
+# Generated application assets
+static/charts/*
+!static/charts/.gitkeep
+static/maps/pollution_map.*
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Machine Learning
+checkpoints/
+runs/
+wandb/
+datasets/cache/
+*.keras.tmp
+
+# Ollama / LLM Models
+*.gguf
+models/
+ollama_models/
+
+# Docker
+docker-data/
+volumes/
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
